@@ -7,15 +7,23 @@
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
-    const QUrl url(QStringLiteral("qrc:/MyItem.qml"));
-    QQuickView view(url);
-    QObject *root = view.rootObject();
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    QQmlApplicationEngine engine;
+    QObject::connect(
+        &engine, &QQmlApplicationEngine::objectCreated, &app,
+        [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection);
+    engine.load(url);
+
+    QObject *root = engine.rootObjects()[0];
     QObject *item = root->findChild<QObject *>("btn_select");
 
     MyClass myClass;
     QObject::connect(item, SIGNAL(qmlSignal(QString)), &myClass, SLOT(cppSlot(QString)));
 
-    view.show();
     return app.exec();
 }
 #if 0
