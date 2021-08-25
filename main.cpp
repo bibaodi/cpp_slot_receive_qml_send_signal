@@ -19,9 +19,8 @@ int main(int argc, char *argv[]) {
     engine.load(url);
 
     QObject *root = engine.rootObjects()[0];
-    QObject *item = root->findChild<QObject *>("btn_select");
 
-    MyClass myClass(nullptr, item);
+    MyClass myClass(nullptr, root);
 
     return app.exec();
 }

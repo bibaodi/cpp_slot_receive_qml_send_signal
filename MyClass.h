@@ -14,6 +14,7 @@ class MyClass : public QObject {
 
   public slots:
     void cppSlot(const QString &msg);
+    void cppSlot(const int &msg);
 };
 
 #endif // SIGNALSLOTLISTVIEW_H

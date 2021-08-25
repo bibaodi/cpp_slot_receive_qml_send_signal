@@ -30,9 +30,9 @@ Window {
             objectName: "btn_translate"
             text:"translate"
             Layout.preferredHeight:parent.height
-            signal qmlSignal2(message:int )
+            signal qmlSignal(int num)
             onClicked: {
-                btn_translate.qmlSignal2(42)
+                btn_translate.qmlSignal(42+3)
                 console.log("btn2 clicked.")
             }
         }
