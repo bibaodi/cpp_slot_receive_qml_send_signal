@@ -22,7 +22,7 @@ Window {
             signal qmlSignal(msg: string)
             onClicked: {
                 btn_select.qmlSignal("Hello from QML from btn")
-                console.log("btn plane clicked.")
+                //console.log("btn plane clicked.")
             }
         }
         Button {
@@ -33,7 +33,7 @@ Window {
             signal qmlSignal(int num)
             onClicked: {
                 btn_translate.qmlSignal(42+3)
-                console.log("btn2 clicked.")
+                //console.log("btn2 clicked.")
             }
         }
     }

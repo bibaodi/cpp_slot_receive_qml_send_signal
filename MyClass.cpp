@@ -3,6 +3,7 @@
 MyClass::MyClass(QObject *parent, QObject *root) : QObject(parent), qml_root(root) {
     if (!root) {
         qDebug() << "Err: root item is null";
+        return;
     }
 
     QObject *item = root->findChild<QObject *>("btn_select");
@@ -12,4 +13,4 @@ MyClass::MyClass(QObject *parent, QObject *root) : QObject(parent), qml_root(roo
 }
 
 void MyClass::cppSlot(const QString &msg) { qDebug() << "cpp received signal from qml: " << msg; }
-void MyClass::cppSlot(const int &msg) { qDebug() << "cpp received signal from qml: " << msg; }
+void MyClass::cppSlot(const int msg) { qDebug() << "cpp received signal from qml: " << msg; }
