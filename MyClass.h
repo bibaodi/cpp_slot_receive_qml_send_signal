@@ -7,7 +7,8 @@
 class MyClass : public QObject {
     Q_OBJECT
   public:
-    explicit MyClass(QObject *parent = 0);
+    explicit MyClass(QObject *parent = 0, QObject *root = nullptr);
+    QObject *qml_root;
 
   signals:
 

@@ -21,8 +21,7 @@ int main(int argc, char *argv[]) {
     QObject *root = engine.rootObjects()[0];
     QObject *item = root->findChild<QObject *>("btn_select");
 
-    MyClass myClass;
-    QObject::connect(item, SIGNAL(qmlSignal(QString)), &myClass, SLOT(cppSlot(QString)));
+    MyClass myClass(nullptr, item);
 
     return app.exec();
 }
