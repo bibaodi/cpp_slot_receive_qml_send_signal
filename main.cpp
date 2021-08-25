@@ -4,12 +4,13 @@
 #include <QtQuick/QQuickItem>
 #include <QtQuick/QQuickView>
 
-int main_work(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
     const QUrl url(QStringLiteral("qrc:/MyItem.qml"));
     QQuickView view(url);
-    QObject *item = view.rootObject();
+    QObject *root = view.rootObject();
+    QObject *item = root->findChild<QObject *>("btn_select");
 
     MyClass myClass;
     QObject::connect(item, SIGNAL(qmlSignal(QString)), &myClass, SLOT(cppSlot(QString)));
