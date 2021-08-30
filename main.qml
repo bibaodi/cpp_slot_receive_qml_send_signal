@@ -37,4 +37,22 @@ Window {
             }
         }
     }
+    Rectangle {
+        id: item_instance
+        x:0
+        y:0
+        width: 71; height: 42
+        border.color: "green"
+        objectName: "item_instance"
+        signal qmlSignal3(variant item_var)
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                console.log(parent.objectName, "clicked")
+                item_instance.qmlSignal3(item_instance)
+            }
+        }
+    }
+
 }
